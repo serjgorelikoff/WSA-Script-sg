@@ -22,19 +22,17 @@ jobs:
       
       - name: Merge changes from main
         run: |
-          git pull https://github.com/YT-Advanced/WSA-Script main --no-edit
+          git pull https://github.com/YT-Advanced/T-T main --no-edit --allow-unrelated-histories
         
       - name: Compare changes
         id: compare
         run: |
-          git diff --name-only HEAD origin/main
-          echo "changes=$(git diff --name-only HEAD origin/main  | tr '\n' ' ')" >> $GITHUB_OUTPUT
+          echo "changes=$(git diff --name-only HEAD origin/main  | grep -v '.github/workflows/build.yml' | grep -v '.github/workflows/update.yml' |  grep -v '.github/workflows/custom_build.yml' | grep -v '.github/workflows/merge_upstream.yml' | tr '\n' ' ')" >> $GITHUB_OUTPUT
           
       - name: Push all changes
         if: ${{ steps.compare.outputs.changes != '' }}
         run: |
-          git push origin main
-
+            git diff --name-only HEAD origin/main | grep -v '.github/workflows/build.yml' | grep -v '.github/workflows/update.yml' |  grep -v '.github/workflows/custom_build.yml' | grep -v '.github/workflows/merge_upstream.yml' | sed 's/.*/"&"/' | xargs git checkout test
       - name: Trigger build
         uses: peter-evans/repository-dispatch@v2.1.1
         if: ${{ steps.compare.outputs.changes != '' }}
