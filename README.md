@@ -1,5 +1,5 @@
 # WSA-Script
-### MagiskOnWSA (For Windows™ 10 and 11) by [YT-Advanced](https://github.com/YT-Advanced/)
+### MagiskOnWSA (For Windows™ 10 and 11) by [@YT-Advanced](https://github.com/YT-Advanced/)
 #### Windows Subsystem For Android™ (WSA) with Google Play Services and Magisk 
 <details>     
    <summary><h3> &nbsp; ❓Want to build your custom build❓ <h3></summary>
