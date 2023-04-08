@@ -32,7 +32,8 @@ jobs:
       - name: Push all changes
         if: ${{ steps.compare.outputs.changes != '' }}
         run: |
-            git diff --name-only HEAD origin/main | grep -v '.github/workflows/build.yml' | grep -v '.github/workflows/update.yml' |  grep -v '.github/workflows/custom_build.yml' | grep -v '.github/workflows/merge_upstream.yml' | sed 's/.*/"&"/' | xargs git checkout test
+            git diff --name-only HEAD origin/main | grep -v '.github/workflows/build.yml' | grep -v '.github/workflows/update.yml' |  grep -v '.github/workflows/custom_build.yml' | grep -v '.github/workflows/merge_upstream.yml' | sed 's/.*/"&"/' | xargs git checkout main
+      
       - name: Trigger build
         uses: peter-evans/repository-dispatch@v2.1.1
         if: ${{ steps.compare.outputs.changes != '' }}
