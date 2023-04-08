@@ -22,7 +22,7 @@ jobs:
       
       - name: Merge changes from main
         run: |
-          git pull https://github.com/YT-Advanced/T-T main --no-edit --allow-unrelated-histories
+          git pull https://github.com/YT-Advanced/WSA-Script main --no-edit --allow-unrelated-histories
         
       - name: Compare changes
         id: compare
